@@ -10,6 +10,11 @@
       modules = [
         containerlab.nixosModules.default
         {
+          virtualisation.docker.rootless = {
+            enable = true;
+            setSocketVariable = true;
+          };
+
           programs.containerlab.enable = true;
           users.users.alice.extraGroups = [ "clab_admins" ];
         }
